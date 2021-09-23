@@ -1,4 +1,4 @@
-SRCS	= push_swap.c includes/psw.h Libft/libft.a struct.c commands.c errors.c
+SRCS	= includes/psw.h Libft/libft.a *.c
 
 OBJS	= ${SRCS:.c=.o}
 
