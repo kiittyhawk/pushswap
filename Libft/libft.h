@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   libft.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jgyles <jgyles@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/06 10:39:38 by jgyles            #+#    #+#             */
+/*   Updated: 2021/10/06 13:00:35 by jgyles           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef LIBFT_H
 # define LIBFT_H
 
@@ -79,5 +91,7 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 
 char	*ft_strnew(size_t size);
+
+int	ft_strcmp(char *s1, char *s2);
 
 #endif

@@ -1,69 +1,71 @@
-#include "./includes/psw.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jgyles <jgyles@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/06 10:40:36 by jgyles            #+#    #+#             */
+/*   Updated: 2021/10/06 10:40:37 by jgyles           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-t_info	*init_struct()
+#include "psw.h"
+
+t_info	*init_struct(void)
 {
-	t_info *info;
+	t_info	*info;
 
-	info = (t_info*)malloc(sizeof(t_info));
-	if(!info)
+	info = (t_info *)malloc(sizeof(t_info));
+	if (!info)
 		send_message(1);
 	info->flag = 0;
 	info->next = 1;
 	info->max = 0;
 	info->mid = 0;
-	return(info);
+	return (info);
 }
 
-void	print_list(t_stack **head, t_stack **head_to)
+static void	free_output(t_operations **output)
 {
-	t_stack	*el;
-	t_stack *elem;
+	t_operations	*tmp;
 
-	el = *head;
-	elem = *head_to;
-	printf("%s\n", "Stack A");
-	while (el)
+	while (*output)
 	{
-		printf("%d - %d - %d\n", el->value, el->flag, el->order);
-		el = el->next;
-	}
-	printf("\n%s\n", "Stack B");
-	while (elem)
-	{
-		printf("%d - %d- %d\n", elem->value, elem->flag, elem->order);
-		elem = elem->next;
+		tmp = *output;
+		*output = (*output)->next;
+		free(tmp);
 	}
 }
 
-void	sort(t_stack **head, t_stack **head_to, t_info *info)
+void	push_swap(t_stack **head, t_stack **head_to, t_info *info)
 {
-	t_stack	*el;
-	int		len;
-	// int i = 0, count = 2;
+	t_stack			*el;
+	t_operations	*output;
 
 	el = *head;
-	len = get_len(&el);
+	output = NULL;
 	while (A_is_sorted_stack(&el) != 1)
 	{
-		step_1(head, head_to, info);
-		// print_list(head, head_to);
-		step_2(head_to, head, info);
-		// elem_is_next(head, info);
-		// print_list(head, head_to);
-		step_3(head, head_to, info);
-		// print_list(head, head_to);
+		step_1(head, head_to, info, &output);
+		step_2(head_to, head, info, &output);
+		step_3(head, head_to, info, &output);
 		el = *head;
 	}
-	head = &el;
+	all_free(head, head_to, info);
+	output_handler(output);
+	free_output(&output);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_stack *head;
+	t_stack	*head;
 	t_stack	*head_to;
 	t_info	*info;
 	int		count;
-	
+
+	if (argc <= 1)
+		send_message(1);
 	info = init_struct();
 	count = get_count(argv);
 	parse_for_stack(argv, &head);
@@ -71,11 +73,7 @@ int main(int argc, char **argv)
 	if (count <= 3)
 		sort_elem3(&head, count);
 	else if (count <= 5)
-		sort_elem5(&head, &head_to, count, info);
+		sort_elem5(&head, &head_to, info);
 	else
-		sort(&head, &head_to, info);
-	// print_list(&head, &head_to);
-	free(info);
-	free(head_to);
-	return (0);
+		push_swap(&head, &head_to, info);
 }

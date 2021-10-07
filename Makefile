@@ -1,35 +1,53 @@
-SRCS	= includes/psw.h Libft/libft.a *.c
+NAME = 	push_swap
 
-OBJS	= ${SRCS:.c=.o}
+BONUS_NAME = checker
 
-NAME	= libftprintf.a
+LIBFT = ./libft/libft.a
 
-INCLUDE	= -I./includes
+PATH_LIB = ./libft/
 
-CC		= gcc
-RM		= rm -f
+HEADER = ./includes/psw.h
+HEADER_INC = -I./includes/
 
-AR		= ar rcs
+SRC = $(shell ls ./src/*.c)
 
-CFLAGS	= -Wall -Wextra -Werror
+%.o : %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $(HEADER_INC) $< -o $@
 
-# .c.o:
-# 			${CC} ${CFLAGS} ${INCLUDE} -c $< -o ${<:.c=.o} 
+OBJS = $(patsubst %.c, %.o, $(SRC))
 
-# ${NAME}:	${OBJS}
-# 			${AR} ${NAME} $?
+SRC_B = $(shell ls ./bonus/*.c)
+OBJS_B = $(patsubst %.c, %.o, $(SRC_B)) $(OBJS)
 
-# all:		${NAME}
-	
-# clean:
-# 			${RM} ${OBJS}
+GNL = ./includes/get_next_line.h
 
-# fclean:		clean
-# 			${RM} ${NAME}
+CC	= gcc
+CFLAGS = -g -Wall -Wextra -Werror
+RM = rm -f
 
-# re:			fclean all
+all:	run_lib $(NAME)
 
-all:
-			${CC} -g ${SRCS}
+bonus:		run_lib $(BONUS_NAME)
 
-.PHONY:		all clean fclean re libftprintf.a
+run_lib:	./libft/libft.h
+			make -C libft/
+
+$(NAME): 	$(OBJS) $(LIBFT) ./includes/psw.h ./libft/libft.h push_swap.c
+			$(CC) $(CFLAGS) $(HEADER_INC) $(LIBFT) $(OBJS) push_swap.c -o $(NAME)
+
+$(BONUS_NAME): 	$(OBJS_B) $(LIBFT) ./includes/psw.h ./libft/libft.h $(GNL)
+				$(CC) $(CFLAGS) $(HEADER_INC) $(LIBFT) $(OBJS_B) -o $(BONUS_NAME)
+
+clean:
+	$(RM) $(OBJS)
+	$(RM) $(OBJS_B)
+	make -C libft/ clean
+
+fclean: clean
+	$(RM) $(OBJS) ./src/push_swap.o push_swap
+	$(RM) $(OBJS_B) checker
+	make -C libft/ fclean
+
+re: fclean all bonus
+
+.PHONY: all clean fclean re
