@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jgyles <jgyles@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/10/06 10:35:55 by jgyles            #+#    #+#             */
+/*   Updated: 2021/10/06 13:22:28 by jgyles           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "psw.h"
 #include "get_next_line.h"
 
@@ -50,8 +62,7 @@ int	main(int argc, char **argv)
 		send_message(1);
 	count = get_count(argv);
 	parse_for_stack(argv, &a);
-	array_handler(argv, argc, &a, count);
+	array_handler_b(argv, count);
 	func(&a, &b);
 	allfree(&a, &b);
-	sleep(1000);
 }

@@ -6,7 +6,7 @@
 /*   By: jgyles <jgyles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 10:36:27 by jgyles            #+#    #+#             */
-/*   Updated: 2021/10/06 12:59:38 by jgyles           ###   ########.fr       */
+/*   Updated: 2021/10/07 11:52:11 by jgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,17 @@ int	cmd_is(char *line, t_stack **a, t_stack **b)
 		return (cmd(a, b, 2));
 	else
 		return (0);
+}
+
+void	array_handler_b(char **argv, int count)
+{
+	int		*array;
+
+	array = (int *)malloc((count + 1) * sizeof(int));
+	if (!array)
+		send_message(1);
+	parse_for_array(argv, array);
+	chck_dup(array, count);
+	selection_sort(array, count);
+	free(array);
 }

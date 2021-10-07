@@ -6,7 +6,7 @@
 /*   By: jgyles <jgyles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 10:39:38 by jgyles            #+#    #+#             */
-/*   Updated: 2021/10/06 13:00:35 by jgyles           ###   ########.fr       */
+/*   Updated: 2021/10/06 13:37:12 by jgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,6 @@ int		ft_toupper(int c);
 
 char	*ft_strnew(size_t size);
 
-int	ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(char *s1, char *s2);
 
 #endif
