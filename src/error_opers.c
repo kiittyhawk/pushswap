@@ -6,7 +6,7 @@
 /*   By: jgyles <jgyles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 10:39:58 by jgyles            #+#    #+#             */
-/*   Updated: 2021/10/07 11:51:40 by jgyles           ###   ########.fr       */
+/*   Updated: 2021/10/06 13:20:34 by jgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	chck_dup(int *array, int count)
 	}
 }
 
-static int	a_is_sorted(int *array, int count)
+static int	A_is_sorted(int *array, int count)
 {
 	int	i;
 
@@ -58,7 +58,7 @@ static int	a_is_sorted(int *array, int count)
 	return (1);
 }
 
-int	a_is_sorted_stack(t_stack **head)
+int	A_is_sorted_stack(t_stack **head)
 {
 	int	i;
 
@@ -76,6 +76,6 @@ int	a_is_sorted_stack(t_stack **head)
 void	search_err(int *array, int count)
 {
 	chck_dup(array, count);
-	if (a_is_sorted(array, count) == 1)
+	if (A_is_sorted(array, count) == 1)
 		exit (0);
 }

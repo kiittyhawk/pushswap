@@ -6,7 +6,7 @@
 /*   By: jgyles <jgyles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 10:36:52 by jgyles            #+#    #+#             */
-/*   Updated: 2021/10/07 11:52:11 by jgyles           ###   ########.fr       */
+/*   Updated: 2021/10/06 13:22:41 by jgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,10 +58,10 @@ void	search_err(int *array, int count);
 int		get_len(t_stack **head);
 void	array_handler(char **argv, int argc, t_stack **head, int count);
 int		get_count(char **argv);
-void	selection_sort(int *num, int size);
+void	selectionSort(int *num, int size);
 void	parse_for_stack(char **argv, t_stack **head);
 t_info	*init_struct(void);
-int		a_is_sorted_stack(t_stack **head);
+int		A_is_sorted_stack(t_stack **head);
 void	push_swap(t_stack **head, t_stack **head_to, t_info *info);
 int		search_max(t_stack **head);
 int		search_min(t_stack **head);

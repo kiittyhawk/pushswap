@@ -6,7 +6,7 @@
 /*   By: jgyles <jgyles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 10:36:27 by jgyles            #+#    #+#             */
-/*   Updated: 2021/10/07 11:52:11 by jgyles           ###   ########.fr       */
+/*   Updated: 2021/10/06 13:22:34 by jgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,6 @@ void	array_handler_b(char **argv, int count)
 		send_message(1);
 	parse_for_array(argv, array);
 	chck_dup(array, count);
-	selection_sort(array, count);
+	selectionSort(array, count);
 	free(array);
 }

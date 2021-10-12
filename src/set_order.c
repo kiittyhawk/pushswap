@@ -6,13 +6,13 @@
 /*   By: jgyles <jgyles@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/06 10:40:22 by jgyles            #+#    #+#             */
-/*   Updated: 2021/10/07 11:52:11 by jgyles           ###   ########.fr       */
+/*   Updated: 2021/10/06 10:40:23 by jgyles           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "psw.h"
 
-void	selection_sort(int *num, int size)
+void	selectionSort(int *num, int size)
 {
 	int	min;
 	int	temp;
@@ -72,7 +72,7 @@ void	array_handler(char **argv, int argc, t_stack **head, int count)
 		send_message(1);
 	parse_for_array(argv, array);
 	search_err(array, count);
-	selection_sort(array, count);
+	selectionSort(array, count);
 	order_set(&el, array, count);
 	*head = el;
 	free(array);
