@@ -12,3 +12,6 @@ Especially focusing on their complexity.
 Sorting values is simple. To sort them the fastest way possible is less simple. Especially
 because from one integers configuration to another, the most efficient sorting solution can
 differ.
+
+# My score
+<a href="https://github.com/JaeSeoKim/badge42"><img src="https://badge42.vercel.app/api/v2/cl394345u012209merytf2tfw/project/2253972" alt="jgyles's 42 push_swap Score" /></a>
